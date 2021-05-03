@@ -1,0 +1,18 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+{% include "core/head.html" %} {% block extra_head %} {% endblock extra_head %} 
+<body>
+  <a name="page"></a>
+  <a id="page"></a>
+  {% include "core/header.html" %}
+  {% block content %}
+
+  
+  {% endblock content %}
+
+</body>
+{% include "core/footer.html" %} {% include "core/scripts.html" %} {% block extra_script %} {% endblock extra_script %}
+
+
+   

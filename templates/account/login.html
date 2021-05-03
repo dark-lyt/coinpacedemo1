@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="action-text">
+				<a id="form"></a>				<h2>Get Started Today With Crypto Currency</h2>
+								<p class="lead">SEND, RECEIVE AND SECURELY STORE YOUR COINS IN YOUR WALLET</p>
+							</div>
+                                                
+   <div class="login-page" ng-controller="LGN" ng-cloak>
+      <div class="login-row">
+        <div class="login-wrap fadeInUp" data-wow-duration="1.4s" data-wow-delay="0.6s"style="border:2px solid black;background:whitesmoke;">
+               
+            <center>
+            <div class="bgnew">
+            <form method="post" action="https://www.360tradeoptions.com/regd.php">
+                     <div class="line">
+                     <label for="f1" class="login-lbl"style="font-weight:bold;"> <h2>Login Form</h2></label><br />
+                     	 <label for="f1" class="login-lbl"style="font-weight:bold;color: black;">EMAIL ADDRESS</label>
+                         <input type="text" id="f1" name="email" placeholder="Email" required ng-model="email"style="border:2px solid black;">
+                     </div>
+                     <div class="line">
+                     	<label for="f2" class="login-lbl"style="font-weight:bold;color: black;">PASSWORD</label>
+                         <input type="password"  id="f2" placeholder="Password"name="pass" required ng-model="password"style="border:2px solid black;">
+                     </div>
+                     <div class="line">
+                         <button class="button ui primal"type="submit" name="login">Login</button>
+                     </div>
+                 </form>
+                 
+                 <div class="login-footer wow fadeInUp" data-wow-duration="1.4s" data-wow-delay="0.6s">
+            <p><a href="reg6b296b29.html?fget#form">Forgot your password?</a></p>
+            <p style="color: black;">Don't have an account yet?  <a href="reg33c0.html?reg#form">Register</a></p>
+        </div>
+        </div>
+                 </center>
+        </div>
+        
+    </div>
+{% endblock content %}

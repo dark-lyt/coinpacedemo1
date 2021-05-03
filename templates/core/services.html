@@ -1,0 +1,128 @@
+{% extends "base.html" %} {% load static  %}
+{% block content %}
+		<!-- Banner Area Starts -->
+		<section class="banner-area">
+			<div class="banner-overlay">
+				<div class="banner-text text-center">
+					<div class="container">
+						<!-- Section Title Starts -->
+						<div class="row text-center">
+							<div class="col-xs-12">
+								<!-- Title Starts -->
+								<h2 class="title-head">our <span>services</span></h2>
+								<!-- Title Ends -->
+								<hr>
+								<!-- Breadcrumb Starts -->
+								<ul class="breadcrumb">
+									<li><a href="{% url 'core:home' %}"> home</a></li>
+									<li>services</li>
+								</ul>
+								<!-- Breadcrumb Ends -->
+							</div>
+						</div>
+						<!-- Section Title Ends -->
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- Banner Area Ends -->
+		<!-- Section Services Starts -->
+        <section class="services">
+			<div class="container">
+				<div class="row">
+					<!-- Service Box Starts -->
+					<div class="col-md-6 service-box">
+						<div>
+							<img id="download-bitcoin" src=" {% static 'images/icons/orange/download-bitcoin.png' %} " alt="download bitcoin">
+							<div class="service-box-content">
+								<h3>Bitcoin Escrow Service</h3>
+								<p>Using a 3rd party escrow service to handle a Bitcoin payment is a good idea when transacting with an untrusted party. Escrow protects sellers from fraudulent buyers by requiring the Bitcoin be deposited up front. Likewise, buyers are protected if the seller turns out to be a scammer and doesn’t deliver the goods. In the event of such a dispute, the escrow service will act as the arbitrator and determine who should ultimately receive the Bitcoin funds.</p>
+							</div>
+						</div>
+					</div>
+					<!-- Service Box Ends -->
+					<!-- Service Box Starts -->
+					<div class="col-md-6 service-box">
+						<div>
+							<img id="add-bitcoins" src=" {% static 'images/icons/orange/add-bitcoins.png' %} " alt="add bitcoins">
+							<div class="service-box-content">
+								<h3>Bitcoin Mining</h3>
+								<p>One can think of Bitcoin as one big global ledger system that records transactions (or ‘moving money’) between one person to another. Whenever Bitcoin transactions are processed on the Bitcoin network – that means Bitcoin is moved from one person to another – someone has to make sure all the transactions are recorded properly and that the ledgers on all the systems are synchronized all over the world.</p>
+							</div>
+						</div>
+					</div>
+					<!-- Service Box Ends -->
+					<!-- Service Box Starts -->
+					<div class="col-md-6 service-box">
+						<div>
+							<img id="buy-sell-bitcoins" src=" {% static 'images/icons/orange/buy-sell-bitcoins.png' %} " alt="buy and sell bitcoins">
+							<div class="service-box-content">
+								<h3>Software Development</h3>
+								<p>Accelerate our crypto currency through Web and Mobile technologies .</p>
+							</div>
+						</div>
+					</div>
+					<!-- Service Box Ends -->
+					<!-- Service Box Starts -->
+					<div class="col-md-6 service-box">
+						<div>
+							<img id="strong-security" src=" {% static 'images/icons/orange/strong-security.png' %} " alt="strong security"/>
+							<div class="service-box-content">
+								<h3>Bitcoin Transaction</h3>
+								<p> Here are a few things you need to know Bitcoin is a worldwide currency
+that uses a public ledger system to record transactions being</p>
+							</div>
+						</div>
+					</div>
+					<!-- Service Box Ends -->
+					<!-- Service Box Starts -->
+					<div class="col-md-6 service-box">
+						<div>
+							<img id="world-coverage" src=" {% static 'images/icons/orange/world-coverage.png' %} " alt="world coverage"/>
+							<div class="service-box-content">
+								<h3>Bitcoin Exchange</h3>
+								<p> Exchanges provide highly varying degrees of safety, security, privacy, and control over your funds and information. Perform your own due diligence and choose a wallet where you will keep your bitcoin before selecting an exchange.</p>
+							</div>
+						</div>
+					</div>
+					<!-- Service Box Ends -->
+					<!-- Service Box Starts -->
+					<div class="col-md-6 service-box">
+						<div>
+							<img id="payment-options" src=" {% static 'images/icons/orange/payment-options.png' %} " alt="payment options"/>
+							<div class="service-box-content">
+								<h3>Bitcoin Investment</h3>
+								<p>Bitcoin has forced itself to become an investment; the severe volatility its value goes through on a daily and even hourly basis makes it much harder to use as currency. By the time a bitcoin transaction is complete, it could be worth less than it was when you first tried to use it. That has made it seem more viable as an investment than as a currency to many, but investment analysts remain wary of bitcoin still.</p>
+							</div>
+						</div>
+					</div>
+					<!-- Service Box Ends -->
+					
+				</div>
+			</div>
+		</section>
+		<!-- Section Services Ends -->
+        <!-- Call To Action Section Starts -->
+        <section class="call-action-all">
+			<div class="call-action-all-overlay">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12">
+							<!-- Call To Action Text Starts -->
+							<div class="action-text">
+								<h2>Get Started Today With Bitcoin</h2>
+								<p class="lead">Open account for free and start trading Bitcoins!</p>
+							</div>
+							<!-- Call To Action Text Ends -->
+							<!-- Call To Action Button Starts -->
+							<p class="action-btn"><a class="btn btn-primary" href="{% url 'account:signup' %}">Register Now</a></p>
+							<!-- Call To Action Button Ends -->
+						</div>
+					</div>
+				</div>
+			</div>
+        </section>
+        <!-- Call To Action Section Ends -->
+
+
+{% endblock content %}

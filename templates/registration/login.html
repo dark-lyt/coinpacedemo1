@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% block extra_head %}
+
+             
+<style type="text/css">
+input[type=text],input[type=password],input[type=email]{
+width:25em;
+text-indent:0.8em;
+outline:none;
+display:block; 
+color:black;
+}
+
+.primal{
+width:10em;
+font-weight:bold;
+display:block;
+background:black;
+color:white; 
+}
+
+select{
+width:25em;
+height:2.6em;
+border:2px solid black;
+display:block; 
+}
+
+.bgnew{position:relative;
+        width:100%;
+        height:100%;
+        background-color:#c6cfc0;
+        }
+
+
+@media screen and (max-width:43em){
+input[type=text],input[type=password],input[type=email]{
+width:80%;
+display:block;    
+}
+
+select{
+width:80%;
+height:2.6em;
+border:2px solid black;
+display:block; 
+}
+}
+
+
+
+</style> 
+{% endblock extra_head %}
+
+{% block content %}
+<!-- Call To Action Section Starts -->
+        <section class="call-action-all">
+			<div class="call-action-all-overlay">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12">
+    <div class="action-text">
+				<a id="form"></a>				<h2>Get Started Today With Crypto Currency</h2>
+								<p class="lead">SEND, RECEIVE AND SECURELY STORE YOUR COINS IN YOUR WALLET</p>
+							</div>
+                                                
+   <div class="login-page" ng-controller="LGN" ng-cloak>
+      <div class="login-row">
+        <div class="login-wrap fadeInUp" data-wow-duration="1.4s" data-wow-delay="0.6s"style="border:2px solid black;background:whitesmoke;">
+               
+            <center>
+            <div class="bgnew">
+            <form method="post" action=".">
+
+            {{ form.as_p }}
+             <button class="button ui primal"type="submit" name="login">Login</button>
+                {% csrf_token %}
+                     {% comment %} <div class="line">
+                     <label for="username" class="login-lbl"style="font-weight:bold;"> <h2>Login Form</h2></label><br />
+                     	 <label for="username" class="login-lbl"style="font-weight:bold;color: black;">EMAIL ADDRESS</label>
+                         <input type="text" id="username" name="username" placeholder="Email" required ng-model="email"style="border:2px solid black;">
+                     </div>
+                     <div class="line">
+                     	<label for="password" class="login-lbl"style="font-weight:bold;color: black;">PASSWORD</label>
+                         <input type="password"  id="password" placeholder="Password"name="password" required ng-model="password"style="border:2px solid black;">
+                     </div>
+                     <div class="line">
+                         <button class="button ui primal"type="submit" name="login">Login</button>
+                     </div> {% endcomment %}
+                 </form>
+                 
+                 <div class="login-footer wow fadeInUp" data-wow-duration="1.4s" data-wow-delay="0.6s">
+            <p><a href="{% url "account:password_reset" %}">Forgot your password?</a></p>
+            <p style="color: black;">Don't have an account yet?  <a href="{% url "acccount:signup" %}">Register</a></p>
+        </div>
+        </div>
+                 </center>
+        </div>
+        
+    </div>
+{% endblock content %}
