@@ -262,8 +262,23 @@ Get $1000 free for every $3000 investment made
 
  <h1><b>Forex/CFDs<br />
 Pricing Plans</b></h1> 
-<div class="boxx"style="background: #840786;color:white;border:6px solid black;"><br>
-<span>Beginner Plan</span>
+{% for item in item_list %}
+    <span>{{ item.title }}</span>
+    <div class="boxx"style="background: #840786;color:white;border:6px solid black;"><br>
+
+<h1 style="color:white;"><b>${{item.min_price}} - ${{item.max_price}}</b></h1>
+<h4 style="color:white;">{{ item.description1 }}<br />{{ item.description2 }}</h4>
+<h4 style="color:white;">Integrated online support</h4>
+<h5 style="width: 100%;color:white;height:3em;background:black;line-height:3em;"><b>DEDICATED ACCOUNT MANAGER</b></h5>
+<h4 style="color:white;">{{ item.description3 }}</h4>
+<h4 style="color:white;">{{ item.description4 }}</h4>
+<h4 style="color:white;">Local language support</h4>
+<h4 style="color:white;">Free Withdrawal: No</h4>
+<h4 style="color:white;"><a href="{{ item.get_absolute_url }}"><button>Get Started</button></a></h4>
+</div>
+{% endfor %}
+{% comment %} <div class="boxx"style="background: #840786;color:white;border:6px solid black;"><br>
+
 <h1 style="color:white;"><b>$300 - $1,000</b></h1>
 <h4 style="color:white;">Min.<br />5% deposit bonus</h4>
 <h4 style="color:white;">Integrated online support</h4>
@@ -273,10 +288,10 @@ Pricing Plans</b></h1>
 <h4 style="color:white;">Local language support</h4>
 <h4 style="color:white;">Free Withdrawal: No</h4>
 <h4 style="color:white;"><a href="reg33c0.html?reg#form"><button>Get Started</button></a></h4>
-</div>
+</div> {% endcomment %}
 
 
-<div class="boxx"style="background: #b20768;color:white;border:6px solid black;"><br>
+{% comment %} <div class="boxx"style="background: #b20768;color:white;border:6px solid black;"><br>
 <span>Advanced Plan</span>
 <h1 style="color:white;"><b>$1,000 - $15,000</b></h1>
 <h4 style="color:white;">Min.<br />10% deposit bonus</h4>
@@ -318,7 +333,7 @@ Pricing Plans</b></h1>
 <h4 style="color:white;">Local language support</h4>
 <h4 style="color:white;">Free Withdrawal: Yes</h4>
 <a href="reg33c033c0.html?reg#form"><button>Get Started</button></a>
-</div>
+</div> {% endcomment %}
 </center> 
         
         

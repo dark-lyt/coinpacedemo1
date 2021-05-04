@@ -15,9 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from cryptocurrency_payment import urls as cryptocurrency_payment_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include("core.urls", namespace='core')),
-    path('account/', include("account.urls", namespace='account'))
+    path('account/', include("account.urls", namespace='account')),
+    path('paydetails/', include(cryptocurrency_payment_urls)),
 ]

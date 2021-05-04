@@ -5,14 +5,15 @@ from django.shortcuts import reverse
 from django_countries.fields import CountryField
 
 CATEGORY_CHOICES = (
-    ('S', 'Shirt'),
-    ('SW', 'SportWear'),
-    ('OW', 'OutWear')
+    ('BP', 'Baby Plan'),
+    ('AP', 'Advanced Plan'),
+    ('LP', 'Luxury Plan'),
+    ('LgP', 'Legend Plan')
 )
 LABEL_CHOICES = (
-    ('P', 'primary'),
-    ('S', 'secondary'),
-    ('D', 'danger')
+    ('DAM', 'Dedicated Account Manager'),
+    ('SAM', 'Senior Account Manager'),
+    ('PRM', 'Personal Relational Manager'),
 )
 # ADDRESS_CHOICES = (
 #     ('B', 'billing'),
@@ -32,12 +33,19 @@ LABEL_CHOICES = (
 
 class Item(models.Model):
     title = models.CharField(max_length=100)
-    category = models.CharField(choices=CATEGORY_CHOICES, max_length=2)
-    label = models.CharField(choices=LABEL_CHOICES, max_length=1)
-    price = models.FloatField()
-    discount_price = models.FloatField(blank=True, null=True)
+    category = models.CharField(choices=CATEGORY_CHOICES, max_length=3)
+    label = models.CharField(choices=LABEL_CHOICES, max_length=3)
+    max_price = models.FloatField()
+    min_price = models.FloatField()
+    to_pay = models.FloatField(blank=True, null=True)
     slug = models.SlugField()
-    description = models.TextField()
+    description1 = models.CharField(max_length=30)
+    description2 = models.CharField(max_length=30)
+    description3 = models.CharField(max_length=30)
+    description4 = models.CharField(max_length=30)
+    description5 = models.CharField(max_length=30)
+    description6 = models.CharField(max_length=30)
+    description7 = models.CharField(max_length=30)
 
     def __str__(self):
         return self.title
@@ -158,14 +166,14 @@ class Order(models.Model):
 #         return self.user.username
 
 
-class Refund(models.Model):
-    order = models.ForeignKey(Order, on_delete=models.CASCADE)
-    reason = models.TextField()
-    accepted = models.BooleanField(default=False)
-    email = models.EmailField()
+# class Refund(models.Model):
+#     order = models.ForeignKey(Order, on_delete=models.CASCADE)
+#     reason = models.TextField()
+#     accepted = models.BooleanField(default=False)
+#     email = models.EmailField()
 
-    def __str__(self):
-        return f"{self.pk}"
+#     def __str__(self):
+#         return f"{self.pk}"
 
 # def userprofile_reciever(sender, instance, created, *args, **kwargs):
 #     if created:

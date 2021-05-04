@@ -1,0 +1,24 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+
+<div class="boxx"style="background: #b20768;color:white;border:6px solid black;"><br>
+<span>{{item.title }}</span>
+<h1 style="color:white;"><b>${{ item.min_price }} - ${{ item.max_price }}</b></h1>
+<h4 style="color:white;">Min.<br />10% deposit bonus</h4>
+<h4 style="color:white;">Integrated online support</h4>
+<h5 style="width: 100%;color:white;height:3em;background:black;line-height:3em;"><b>SENIOR ACCOUNT MANAGER</b></h5>
+<h4 style="color:white;">Maintenance Fees: Yes</h4>
+<h4 style="color:white;">Trading Freq.: Low</h4>
+<h4 style="color:white;">Local language support</h4>
+<h4 style="color:white;">Free Withdrawal: Yes</h4>
+{% comment %} <a href="reg33c0.html?reg#form"><button>Get Started</button></a> {% endcomment %}
+
+</div>
+
+<form method='post' action=".">
+{% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit"/>Pay</button>
+</form>
+
+{% endblock content%}
