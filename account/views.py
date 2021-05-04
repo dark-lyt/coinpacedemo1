@@ -20,14 +20,15 @@ def register(request):
             new_user.save()
             
             country = user_form.cleaned_data['country']
+            username = user_form.cleaned_data['username']
+            password = user_form.cleaned_data['password']
             print(country)
             photo = user_form.cleaned_data['photo']
             phone_number = user_form.cleaned_data['phone_number']
             Profile.objects.create(user=new_user, country=country, photo=photo, phone_number=phone_number)
-            return redirect('account:dashboard')
-            # user = authenticate(username=username, password=password)
-            # login(request, user)
-            # return HttpResponse('Authenticated successfully')
+            user = authenticate(username=username, password=password)
+            login(request, user)
+            return redirect("core:home")
         else:
             return render(request, 'account/register.html', {'form': user_form, 'error':user_form.errors})
             
@@ -47,7 +48,7 @@ def user_login(request):
             if user is not None:
                 if user.is_active:
                     login(request, user)
-                    return HttpResponse('Authenticated successfully')
+                    # return HttpResponse('Authenticated successfully')
                 else:
                     return HttpResponse('Disabled account')
             else:
