@@ -26,7 +26,7 @@ SECRET_KEY = '#25allw07=4$_7&lk&1dte*gg@in5&94@dq4uvjxoev151y83y'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost:8000', 'https://coinpacedemo.herokuapp.com/']
 
 
 # Application definition
