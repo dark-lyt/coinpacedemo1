@@ -1,5 +1,5 @@
 from django import forms
 
 class PayForm(forms.Form):
-    toPay = forms.IntegerField()
+    coin_amount = forms.IntegerField()
  

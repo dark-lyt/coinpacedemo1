@@ -1,0 +1,380 @@
+{% extends "core/dash-base.html" %} {% load static %}
+{% block content %}
+
+
+  <body class="vertical-layout vertical-menu-modern 2-columns   fixed-navbar" data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
+	{% include "core/dash-nav.html" %}
+  
+	  <!-- BEGIN: Main Menu-->
+{% comment %}   
+	  <div  class="main-menu menu-fixed menu-dark menu-accordion menu-shadow" data-scroll-to-active="true">
+		<div  class="main-menu-content">
+		  <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+			<li class=""><a href="index-2.html"><i class="fas fa-home"></i><span class="la la-menu-title" data-i18n="Crypto Dashboard">Crypto Dashboard</span></a>
+			</li>
+			<li class=" navigation-header"><span data-i18n="Crypto">Crypto</span><i class="la la-ellipsis-h" data-toggle="tooltip" data-placement="right" data-original-title="Crypto"></i>
+			</li>
+			<li class="active1 nav-item"><a href="crypto-transactions.html"><i class="fas fa-list"></i><span class="menu-title" data-i18n="Transactions">Transactions</span></a>
+			</li>
+			<li class=" nav-item"><a href="transaction.html"><i class="fas fa-credit-card"></i><span class="menu-title" data-i18n="Wallet">Invest</span></a>
+			</li>
+			</li>
+		  </ul>
+		</div>
+	  </div> {% endcomment %}
+  
+	  <!-- END: Main Menu-->
+    <!-- BEGIN: Content-->
+    <div class="app-content content">
+      <div class="content-overlay"></div>
+        <div class="content-header row">
+          <div class="content-header-left col-md-6 col-12 mb-2 breadcrumb-new">
+            <h3 class="content-header-title mb-0 d-inline-block">Transactions</h3>
+            <div class="row breadcrumbs-top d-inline-block">
+              <div class="breadcrumb-wrapper col-12">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="{% url 'account:dashboard' %}">Home</a>
+                  </li>
+                  <li class="breadcrumb-item active">Transactions
+                  </li>
+                </ol>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        <div class="content-body"><section id="all-transactions">
+		<div class="row">
+		<div class="col-12">
+			<div class="card">
+				<div class="card-header">
+					<h4 class="card-title">Transactions Details</h4>
+				</div>
+				<div class="card-content mt-1">
+					<div class="table-responsive">
+						<table id="crypto-transaction" class="table table-hover table-xl trans-wrapper">
+          					<thead>
+            					<tr>
+									<th class="border-top-0">ID</th>
+									<th class="border-top-0">Type</th>
+									<th class="border-top-0">Amount</th>
+									{% comment %} <th class="border-top-0">Price</th> {% endcomment %}
+									<th class="border-top-0">USD ($)</th>
+									{% comment %} <th class="border-top-0">Fee (%)</th>	 {% endcomment %}
+									<th class="border-top-0">Status</th>
+									<th class="border-top-0">Time</th>
+								</tr>
+							</thead>
+							<tbody>
+							{% for detail in history %}
+
+								<tr>									
+									<td>
+										<div class="Trans-id">{{ detail.id }}</div>
+									</td>
+									<td>
+										<div class="trans-type success">Deposit</div>
+									</td>
+									<td>
+										<div class="amount">
+											<i class="la la-bitcoin"></i>{{ detail.crypto_amount }}
+										</div>
+									</td>
+									{% comment %} <td>
+										<div class="price">119.</div>
+									</td> {% endcomment %}
+									<td>
+										<div class="usd">{{ detail.fiat_amount }}</div>
+									</td>
+									{% comment %} <td>
+										<div class="fee">0.2</div>
+									</td> {% endcomment %}
+									<td>
+									{% if detail.status is 'paid' %}
+									<div class="status badge badge-success badge-pill badge-sm">Completed</div>
+									{% else %}
+									<div class="status badge badge-danger badge-pill badge-sm">Not Paid</div>
+									{% endif %}
+										
+									</td>
+									<td>
+										<div class="time">{{ detail.created_at }}</div>
+									</td>
+								</tr>
+								{% endfor %}
+								{% comment %} <tr>									
+									<td>
+										<div class="Trans-id">#14321</div>
+									</td>
+									<td>
+										<div class="trans-type danger">Sell</div>
+									</td>
+									<td>
+										<div class="amount">
+											<i class="la la-viacoin"></i>1.386</div>
+									</td>
+									<td>
+										<div class="price">134.12</div>
+									</td>
+									<td>
+										<div class="usd">346.23</div>
+									</td>
+									<td>
+										<div class="fee">0.2</div>
+									</td>
+									<td>
+										<div class="status badge badge-danger badge-pill badge-sm">Cancel</div>
+									</td>
+									<td>
+										<div class="time">03.50 pm</div>
+									</td>
+								</tr>
+								<tr>									
+									<td>
+										<div class="Trans-id">#23531</div>
+									</td>
+									<td>
+										<div class="trans-type success">Buy</div>
+									</td>
+									<td>
+										<div class="amount">
+											<i class="la la-gg-circle"></i>0.231
+										</div>
+									</td>
+									<td>
+										<div class="price">124.12</div>
+									</td>
+									<td>
+										<div class="usd">456.23</div>
+									</td>
+									<td>
+										<div class="fee">0.2</div>
+									</td>
+									<td>
+										<div class="status badge badge-success badge-pill badge-sm">Completed</div>
+									</td>
+									<td>
+										<div class="time">12.23 pm</div>
+									</td>
+								</tr>
+								<tr>									
+									<td>
+										<div class="Trans-id">#12463</div>
+									</td>
+									<td>
+										<div class="trans-type success">Buy</div>
+									</td>
+									<td>
+										<div class="amount">
+											<i class="la la-bitcoin"></i>0.231
+										</div>
+									</td>
+									<td>
+										<div class="price">231.12</div>
+									</td>
+									<td>
+										<div class="usd">346.34</div>
+									</td>
+									<td>
+										<div class="fee">0.2</div>
+									</td>
+									<td>
+										<div class="status badge badge-secondary badge-pill badge-sm">Pending</div>
+									</td>
+									<td>
+										<div class="time">02.12 pm</div>
+									</td>
+								</tr>
+								<tr>									
+									<td>
+										<div class="Trans-id">#12431</div>
+									</td>
+									<td>
+										<div class="trans-type danger">Sell</div>
+									</td>
+									<td>
+										<div class="amount">
+											<i class="la la-bitcoin"></i>2.945
+										</div>
+									</td>
+									<td>
+										<div class="price">431.12</div>
+									</td>
+									<td>
+										<div class="usd">125.12</div>
+									</td>
+									<td>
+										<div class="fee">0.2</div>
+									</td>
+									<td>
+										<div class="status badge badge-danger badge-pill badge-sm">Cancel</div>
+									</td>
+									<td>
+										<div class="time">10.00 am</div>
+									</td>
+								</tr>
+								<tr>									
+									<td>
+										<div class="Trans-id">#12532</div>
+									</td>
+									<td>
+										<div class="trans-type danger">Sell</div>
+									</td>
+									<td>
+										<div class="amount">
+											<i class="la la-gg-circle"></i>0.235
+										</div>
+									</td>
+									<td>
+										<div class="price">215.34</div>
+									</td>
+									<td>
+										<div class="usd">236.12</div>
+									</td>
+									<td>
+										<div class="fee">0.2</div>
+									</td>
+									<td>
+										<div class="status badge badge-secondary badge-pill badge-sm">Pending</div>
+									</td>
+									<td>
+										<div class="time">08.22 am</div>
+									</td>
+								</tr>
+								<tr>									
+									<td>
+										<div class="Trans-id">#23165</div>
+									</td>
+									<td>
+										<div class="trans-type success">Buy</div>
+									</td>
+									<td>
+										<div class="amount">
+											<i class="la la-bitcoin"></i>2.346
+										</div>
+									</td>
+									<td>
+										<div class="price">235.12</div>
+									</td>
+									<td>
+										<div class="usd">332.23</div>
+									</td>
+									<td>
+										<div class="fee">0.2</div>
+									</td>
+									<td>
+										<div class="status badge badge-success badge-pill badge-sm">Completed</div>
+									</td>
+									<td>
+										<div class="time">12.43 am</div>
+									</td>
+								</tr>
+								<tr>									
+									<td>
+										<div class="Trans-id">#63423</div>
+									</td>
+									<td>
+										<div class="trans-type danger">Sell</div>
+									</td>
+									<td>
+										<div class="amount">
+											<i class="la la-viacoin"></i>3.213
+										</div>
+									</td>
+									<td>
+										<div class="price">456.12</div>
+									</td>
+									<td>
+										<div class="usd">231.53</div>
+									</td>
+									<td>
+										<div class="fee">0.2</div>
+									</td>
+									<td>
+										<div class="status badge badge-secondary badge-pill badge-sm">Pending</div>
+									</td>
+									<td>
+										<div class="time">11.21 am</div>
+									</td>
+								</tr>								 {% endcomment %}
+
+								
+
+							</tbody>
+						</table>
+					</div>
+					{% comment %} <div class="row">
+						<div class="col-12">
+							
+							<nav aria-label="Page navigation">
+								<ul class="pagination justify-content-end m-2">
+									<li class="page-item">
+										<a class="page-link" href="#" aria-label="Previous">
+											<span aria-hidden="true">« Prev</span>
+											<span class="sr-only">Previous</span>
+										</a>
+									</li>
+									<li class="page-item"><a class="page-link" href="#">1</a></li>
+									<li class="page-item"><a class="page-link" href="#">2</a></li>
+									<li class="page-item active"><a class="page-link" href="#">3</a></li>
+									<li class="page-item"><a class="page-link" href="#">4</a></li>
+									<li class="page-item"><a class="page-link" href="#">5</a></li>
+									<li class="page-item">
+										<a class="page-link" href="#" aria-label="Next">
+											<span aria-hidden="true">Next »</span>
+											<span class="sr-only">Next</span>
+										</a>
+									</li>
+								</ul>
+							</nav>								
+						</div>
+					</div> {% endcomment %}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+        </div>
+      </div>
+    </div>
+    <!-- END: Content-->
+
+
+   
+
+    <!-- Buynow Button-->
+    
+    <div class="sidenav-overlay"></div>
+    <div class="drag-target"></div>
+
+    {% comment %} <!-- BEGIN: Footer-->
+    <footer class="footer footer-static footer-light navbar-border navbar-shadow">
+      <p class="clearfix blue-grey lighten-2 text-sm-center mb-0 px-2"><span class="float-md-left d-block d-md-inline-block">Copyright &copy; 2020 <a class="text-bold-800 grey darken-2" href="" target="_blank">DOLLARINVEST</a></span><span class="float-md-right d-none d-lg-block">Hand-crafted & Made with<i class="ft-heart pink"></i><span id="scroll-top"></span></span></p>
+    </footer>
+    <!-- END: Footer-->
+
+
+    <!-- BEGIN: Vendor JS-->
+    <script src="../../../app-assets/vendors/js/vendors.min.js"></script>
+    <!-- BEGIN Vendor JS-->
+
+    <!-- BEGIN: Page Vendor JS-->
+    <!-- END: Page Vendor JS-->
+
+    <!-- BEGIN: Theme JS-->
+    <script src="../../../app-assets/js/core/app-menu.min.js"></script>
+    <script src="../../../app-assets/js/core/app.min.js"></script>
+    <script src="../../../app-assets/js/scripts/customizer.min.js"></script>
+    <script src="../../../app-assets/js/scripts/footer.min.js"></script>
+    <!-- END: Theme JS-->
+
+    <!-- BEGIN: Page JS-->
+    <!-- END: Page JS-->
+
+  </body> {% endcomment %}
+  <!-- END: Body-->
+
+<!-- Mirrored from pixinvent.com/modern-admin-clean-bootstrap-4-dashboard-html-template/html/ltr/crypto-menu-template/crypto-transactions.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Oct 2020 21:59:19 GMT -->
+{% comment %} </html> {% endcomment %}
+
+{% endblock content %}

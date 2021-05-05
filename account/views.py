@@ -5,6 +5,8 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from .forms import LoginForm, UserRegistratioinForm, UserEditForm, ProfileEditForm
 from django.contrib import messages
+from core.models import Item
+from cryptocurrency_payment.models import CryptoCurrencyPayment
 
 
 def register(request):
@@ -60,8 +62,11 @@ def user_login(request):
 
 @login_required
 def dashboard(request):
-    return render(request, 'account/dashboard.html')
+    return render(request, 'core/index-2.html')
 
+def invest(request):
+    item_list = Item.objects.all()
+    return render(request, "core/transaction.html", {'item_list':item_list})
 
 @login_required
 def edit(request):
@@ -81,3 +86,12 @@ def edit(request):
         profile_form = ProfileEditForm(instance=request.user.profile)
 
     return render(request, 'account/edit.html', {'user_form': user_form, 'profile_form': profile_form})
+
+
+def transaction(request):
+    try:
+        history = CryptoCurrencyPayment.objects.filter(user=request.user).order_by('-created_at')
+        return render(request, "core/crypto-transactions.html", {'history':history})
+    except ObjectDoesNotExist:
+        messages.warning(request, "You do not have an active order")
+        return redirect("core:home")

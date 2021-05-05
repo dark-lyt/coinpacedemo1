@@ -16,7 +16,9 @@ def home(request):
     item_list = Item.objects.all()
     return render(request, "core/index.html", {'item_list':item_list})
 
+
 def product(request, slug):
+    item_list = Item.objects.all()
     item = get_object_or_404(Item, slug=slug)
     form = PayForm(request.POST or None)
     if request.method == "POST":
@@ -24,7 +26,7 @@ def product(request, slug):
         if form.is_valid():
             print("\nIt got here!!!! and here too\n")
             cd = form.cleaned_data
-            price = cd['toPay']
+            price = cd['coin_amount']
             print(price)
             if price >= item.min_price and price <= item.max_price:
                 item.to_pay = price
@@ -37,7 +39,7 @@ def product(request, slug):
         else:
             print("ERROR SOMEWHARE")
             messages.Info(request, "Please enter a value with the range")
-    return render(request, 'core/product-page.html', {'form': form, 'item':item})    
+    return render(request, 'core/transaction2.html', {'form': form, 'item':item, 'item_list':item_list})    
 
 
 @login_required

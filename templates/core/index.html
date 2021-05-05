@@ -263,9 +263,9 @@ Get $1000 free for every $3000 investment made
  <h1><b>Forex/CFDs<br />
 Pricing Plans</b></h1> 
 {% for item in item_list %}
-    <span>{{ item.title }}</span>
+    
     <div class="boxx"style="background: #840786;color:white;border:6px solid black;"><br>
-
+<span>{{ item.title }}</span>
 <h1 style="color:white;"><b>${{item.min_price}} - ${{item.max_price}}</b></h1>
 <h4 style="color:white;">{{ item.description1 }}<br />{{ item.description2 }}</h4>
 <h4 style="color:white;">Integrated online support</h4>
@@ -274,7 +274,7 @@ Pricing Plans</b></h1>
 <h4 style="color:white;">{{ item.description4 }}</h4>
 <h4 style="color:white;">Local language support</h4>
 <h4 style="color:white;">Free Withdrawal: No</h4>
-<h4 style="color:white;"><a href="{{ item.get_absolute_url }}"><button>Get Started</button></a></h4>
+<h4 style="color:white;"><a href=" {% url 'account:invest'  %}"><button>Get Started</button></a></h4>
 </div>
 {% endfor %}
 {% comment %} <div class="boxx"style="background: #840786;color:white;border:6px solid black;"><br>

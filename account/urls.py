@@ -46,6 +46,8 @@ urlpatterns = [
     path('edit/', views.edit, name='edit'),
     path('dashboard/', views.dashboard, name='dashboard'),
     path('signup/', views.register, name='signup'),
+    path('transactions/', views.transaction, name='transaction'),
+    path('invest/', views.invest, name='invest'),
     # path('login/', views.login, name='login'),
 ]
 
