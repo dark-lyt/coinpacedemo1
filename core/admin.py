@@ -5,4 +5,5 @@ from .models import Item, Order, OrderItem, Withdraw
 admin.site.register(Item)
 admin.site.register(Order)
 admin.site.register(OrderItem)
+admin.site.register(Withdraw)
 
