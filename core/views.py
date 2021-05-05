@@ -4,12 +4,15 @@ from django.shortcuts import render, get_object_or_404, redirect, reverse
 import random
 from django.contrib.auth.decorators import login_required
 import string
-from .forms import PayForm
+from .forms import ContactForm, PayForm
 from .models import Item, Order, OrderItem
 # from django.views.generic import DetailView,
 from cryptocurrency_payment.models import create_new_payment
 from django.conf import settings
+from coinpace.settings import EMAIL_HOST_USER
+from django.core.mail import message, send_mail
 
+ADMIN_MAIL = 'amoakbeall@fuwari.be'
 
 
 def home(request):
@@ -77,5 +80,18 @@ def terms(request):
     return render(request, "core/terms.html")
 
 def contact(request):
-    return render(request, "core/contact.html")
+    form = ContactForm(request.POST or None)
+    if request.method == "POST":
+        print("posted")
+        if form.is_valid():
+            print()
+            print("form is valid")
+            print()
+            subject = form.cleaned_data.get('subject')
+            message =f"Message from:{form.cleaned_data.get('email')}:\n{form.cleaned_data.get('snd_message')}" 
+            recipient = ADMIN_MAIL
+            send_mail(subject, message, EMAIL_HOST_USER, [recipient   ], fail_silently=False)
+            return redirect("core:home")
+    print("HEYYYY WTF")
+    return render(request, "core/contact.html", {'form':form})
 

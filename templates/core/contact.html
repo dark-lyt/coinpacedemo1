@@ -34,8 +34,28 @@
                     <div class="col-xs-12 col-md-8 contact-form">
 						<h3 class="col-xs-12">feel free to drop us a message</h3>
                         <p class="col-xs-12">Need to speak to us? Do you have any queries or suggestions? Please contact us about all enquiries including membership and volunteer work using the form below.</p>
+                         <form method='POST' action='.'>
+                        {% csrf_token %}
+                        {% for field in form %}
+                        {% if field == form.snd_message %}
+                            <div class="form-group col-md-12">
+                                {{ field }}
+                            </div>
+                        {% else %}
+                        <div class="form-group col-md-6">
+                                {{ field }}
+                            </div>
+                        {% endif %}
+                                                    
+                        {% endfor %}
+                        {% comment %} {{ form.snd_message }} {% endcomment %}
+                        <button class="btn btn-primary btn-contact" type="submit">send message</button>
+                            
+                            {% comment %} <button type="submit">submit</button> {% endcomment %}
+                        </form>  
                         <!-- Contact Form Starts -->
-                        <form method="post" action="https://www.sparkstrade.com/index.html#form">
+                          {% comment %} <form method="post" action=".">
+                        {% csrf_token %}
                             <!-- Input Field Starts -->
                             <div class="form-group col-md-6">
                                 <input class="form-control" name="firstname" id="firstname" placeholder="FIRST NAME" type="text" required>
@@ -61,19 +81,21 @@
                                 <textarea class="form-control" id="message" name="message" placeholder="MESSAGE" required></textarea>
                             </div>
                             <!-- Input Field Ends -->
+                             <button class="button ui primal"type="submit" name="submit">Login</button>
+                         <button class="btn btn-primary btn-contact" type="submit">send message</button>
                             <!-- Submit Form Button Starts -->
-                            <div class="form-group col-xs-12 col-sm-4">
-                                <button class="btn btn-primary btn-contact" type="submit"name="submessage">send message</button>
-                            </div>
+                             <div class="form-group col-xs-12 col-sm-4">
+                                <button class="btn btn-primary btn-contact" type="submit">send message</button>
+                            </div> 
                             <!-- Submit Form Button Ends -->
                             <!-- Form Submit Message Starts -->
-                            <div class="col-xs-12 text-center output_message_holder d-none">
+                              <div class="col-xs-12 text-center output_message_holder d-none">
 								<p class="output_message"></p>
-                            </div>
-                             <!-- Form Submit Message Ends -->
+                            </div> 
+                             <!-- Form Submit Message Ends --> 
                             
-                        </form>
-						<!-- Contact Form Ends -->
+                        </form> 
+						<!-- Contact Form Ends --> {% endcomment %}
                     </div>
 					<!-- Contact Widget Starts -->
                     <div class="col-xs-12 col-md-4">
@@ -143,7 +165,7 @@
 							</div>
 							<!-- Call To Action Text Ends -->
 							<!-- Call To Action Button Starts -->
-							<p class="action-btn"><a class="btn btn-primary" href="register-2.html">Register Now</a></p>
+							<p class="action-btn"><a class="btn btn-primary" href="{% url 'account:signup' %}">Register Now</a></p>
 							<!-- Call To Action Button Ends -->
 						</div>
 					</div>

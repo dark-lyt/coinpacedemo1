@@ -28,8 +28,8 @@
                  </form>
                  
                  <div class="login-footer wow fadeInUp" data-wow-duration="1.4s" data-wow-delay="0.6s">
-            <p><a href="reg6b296b29.html?fget#form">Forgot your password?</a></p>
-            <p style="color: black;">Don't have an account yet?  <a href="reg33c0.html?reg#form">Register</a></p>
+            <p><a href="{% url 'account:password_reset' %}">Forgot your password?</a></p>
+            <p style="color: black;">Don't have an account yet?  <a href="{% url 'account:signup' %}">Register</a></p>
         </div>
         </div>
                  </center>
