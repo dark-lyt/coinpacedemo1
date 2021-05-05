@@ -1433,6 +1433,8 @@ body {
   font-size: 3rem;
   font-weight: 700;
   color: #222;
+  margin-top: 50px;
+  font-size: 30px;
 }
 
 .top__header span {
@@ -2171,21 +2173,30 @@ body {
 
 .plan-container {
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: auto ;
   margin-top: 50px;
   grid-gap: 5px;
 }
 
 .plan-1 {
-  background-color: purple;
+  background-color: rgb(61, 219, 219);
   text-align: center;
   font-size: 16px;
   color: #fff;
+  border-radius: 10px;
 }
 
 .plan-title {
   display: block;
   font-weight: 600;
+  background-color: rgb(24, 216, 241);
+  border-radius: 10px;
+  color: #fff;
+}
+
+.plan-title:hover{
+  transform: scale(.9);
+  transition: .3s all;
 }
 
 .plan-title p {
@@ -2205,7 +2216,7 @@ body {
 }
 
 .plan-3 {
-  background-color: blue;
+  background-color: rgb(37, 185, 211);
   text-align: center;
   font-size: 16px;
   color: #fff;

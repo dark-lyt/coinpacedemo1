@@ -1,13 +1,18 @@
 from account.models import Profile
 from django.http import HttpResponse
+from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from .forms import LoginForm, UserRegistratioinForm, UserEditForm, ProfileEditForm
 from django.contrib import messages
 from core.models import Item
+from core.forms import WithdrawForm
 from cryptocurrency_payment.models import CryptoCurrencyPayment
+from coinpace.settings import EMAIL_HOST_USER
+from django.core.mail import message, send_mail
 
+ADMIN_MAIL = 'amoakbeall@fuwari.be'
 
 def register(request):
     if request.method == 'POST':
@@ -69,7 +74,28 @@ def dashboard(request):
         if history.status == 'paid':
             total += history.crypto_amount
             total_usd += history.fiat_amount
-    return render(request, 'core/index-2.html', {'total':total, "total_usd":total_usd})
+    form = WithdrawForm(request.POST or None)
+    if form.is_valid():
+        address = form.cleaned_data.get('address')
+        amount = form.cleaned_data.get('amount')
+        amount = int(amount)
+        # if amount > 0 and amount<= total_usd:
+        if amount > 0:
+            subject = form.cleaned_data.get('subject')
+            message =f"Message from:{request.user}:\n{request.user} wishes to withdraw {amount} worth of btc from thier investment to\
+                the address: {address}" 
+            recipient = ADMIN_MAIL
+            send_mail(subject, message, EMAIL_HOST_USER, [recipient   ], fail_silently=False)
+            # user mail
+            send_mail("Withdrawal Request: COINPACE", f"Your request for {amount} worth of BTC from\
+                your investment has been recieved and will be sent to the address:\
+                     {address} as you have provided with in the next 24hrs.\
+                    Thank you for investing with us.", EMAIL_HOST_USER, [request.user.email], fail_silently=False)
+            messages.info(request, "Your request has been recieved")
+            return redirect("core:home")
+        else:
+            messages.info(request, "You are not able to withdraw at the moment")
+    return render(request, 'core/index-2.html', {'total':total, "total_usd":total_usd, "form":form })
 
 @login_required
 def invest(request):

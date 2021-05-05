@@ -13,7 +13,7 @@
 			</div>
 			<div class="content-body"><div id="crypto-stats-3" class="row">
 		<div class=" col-12 col-xl-6 ">
-			<div style="height: 290px;" class="card crypto-card-3 pull-up">
+			<div style="height: 310px; margin-top: 10px;" class="card crypto-card-3 pull-up">
 				<div class="card-content">
 					<div class="card-body pb-0">
 						<div class="row">
@@ -37,67 +37,36 @@
 			</div>
 		</div>
 		
-		<div class="col-11 col-xl-6">
-		<div id="accordionCrypto" role="tablist" aria-multiselectable="true">
-			<div class="card accordion collapse-icon accordion-icon-rotate">
+		<div class="col-8 col-xl-6">
+			<!--BTC Withdrawals popup-->
+	<div class="popup" id="bitcoin-withdraw">
+		<div class="popup-content">
+      <div style=" margin: 0 auto; width: 35%; text-align: center; margin-top: 20px;" class="deposit">
+       
+        <h2 style="margin-top: 20px;">BTC Withdrawals</h2>
+      </div>
 
-				<a id="heading31" data-toggle="collapse"  href="#accordionBTC"
-					aria-expanded="true" aria-controls="accordionBTC" class="card-header bg-info p-1 bg-lighten-1">
-					<div class="card-title lead white">BTC</div>
-				</a>
-				<div id="accordionBTC" role="tabpanel" data-parent="#accordionCrypto" aria-labelledby="heading31" class=" collapse show"
-					aria-expanded="true">
-					<div class="card-content">
-						<div class="card-body p-0">
-							<div class="media-list list-group">
-								<div class="list-group-item list-group-item-action media p-1">
-									<a class="media-link" href="#">
-										<div class="media-left">
-											<p class="text-bold-600 m-0">BTC/USD</p>
-											<p class="font-small-2 text-muted m-0">24h Change</p>
-											<p class="font-small-2 text-muted m-0">24h Volume</p>
-										</div>
-										<div class="media-body text-right">
-											<p class="text-bold-600 m-0">11916.9</p>
-											<p class="font-small-2 text-muted m-0 success">283.1 USD (+2.33%)</p>
-											<p class="font-small-2 text-muted m-0 text-bold-600">1029.1906 BTC</p>
-										</div>
-									</a>
-								</div>
-								<div class="list-group-item list-group-item-action media p-1 bg-info bg-lighten-5">
-									<a class="media-link" href="#">
-										<div class="media-left">
-											<p class="text-bold-600 m-0">BTC/EUR</p>
-											<p class="font-small-2 text-muted m-0">24h Change</p>
-											<p class="font-small-2 text-muted m-0">24h Volume</p>
-										</div>
-										<div class="media-body text-right">
-											<p class="text-bold-600 m-0">9213.3</p>
-											<p class="font-small-2 text-muted m-0 success">56.1 EUR (+5.52%)</p>
-											<p class="font-small-2 text-muted m-0 text-bold-600">560.1906 BTC</p>
-										</div>
-									</a>
-								</div>
-								<div class="list-group-item list-group-item-action media p-1 border-bottom-0">
-									<a class="media-link" href="#">
-										<div class="media-left">
-											<p class="text-bold-600 m-0">BTC/GBP</p>
-											<p class="font-small-2 text-muted m-0">24h Change</p>
-											<p class="font-small-2 text-muted m-0">24h Volume</p>
-										</div>
-										<div class="media-body text-right">
-											<p class="text-bold-600 m-0">8015.1</p>
-											<p class="font-small-2 text-muted m-0 danger">-183.1 USD (-1.33%)</p>
-											<p class="font-small-2 text-muted m-0 text-bold-600">320.1906 BTC</p>
-										</div>
-									</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+			<div class="former">
+        <form method="post" action=".">
+		{% csrf_token %}
+          <h6 class="" style="font-weight: bold;">Enter an amount</h6>
+          <div class="form-group mt-1">
+            <input type="number" id="amount" class="form-control crypto-input" required name="amount" style="color: black;">
+          </div>
+          <h6 class="" style="font-weight: bold;">Enter Btc Address</h6>
+          <div class="form-group mt-1">
+            <input type="text" class="form-control crypto-input" id="address" required name="address" style="color: black;" >
+          </div>
+          <div class="mt-2">
+            <button type="submit" class="btn">Withdraw</button>
+          </div>
+        </form>
+
+        
+      </div>
 		</div>
+	</div>
+	<!--BTC Withdrawals popup-->
 		</div>
 	</div>
 	</div>

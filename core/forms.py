@@ -40,5 +40,16 @@ class ContactForm(forms.Form):
     }))
 
 class WithdrawForm(forms.Form):
-    amount = forms.IntegerField()
-    address = forms.Textarea()
+    amount = forms.IntegerField(widget=forms.NumberInput(attrs={
+        'name':'amount',
+        'id':'amount',
+        'class':"form-control",
+        'placeholder':"Enter price within range of your investment",
+    }))
+
+    address = forms.CharField   (widget=forms.TextInput(attrs={
+        'name':'address',
+        'id':'address',
+        'class':"form-control",
+        'placeholder':"Enter your btc wallet address",
+    }))
