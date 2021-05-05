@@ -172,7 +172,7 @@ CRYPTOCURRENCY_PAYMENT = {
         "REFRESH_PRICE_AFTER_MINUTE": 15,
         "REUSE_ADDRESS": False,
         "ACTIVE": True,
-        "MASTER_PUBLIC_KEY": 'xpub6Cn6iAfKTig91dDpMJxV4ZRHYc6gSUJR6HVEqjke1EwXiuvUT72xQ9RR69XrnzUsMjHrM2L3jpEVazsi7iVHVWjyCZFzoNBK1eUwphURSEp',
+        "MASTER_PUBLIC_KEY": 'xpub6Cf1MDDeDy8JCk4kbzYGQZPQCkcr8XkoAUNyCKNcJ6bRzkHpNxfh8cbBWUP7QT279FcVWUwscnS6Memy1yuBSMxzJzUVQ9czgowMNYAUMra',
         "CANCEL_UNPAID_PAYMENT_HRS": 24,
         "CREATE_NEW_UNDERPAID_PAYMENT": True,
         "IGNORE_UNDERPAYMENT_AMOUNT": 10,
@@ -190,11 +190,11 @@ LOGOUT_URL = 'account:logout'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-# EMAIL_HOST = 'smtp.gmail.com'
-# EMAIL_USE_TLS = True
-# EMAIL_PORT = 587
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
 EMAIL_HOST_USER = 'karlavogel1235@gmail.com'
-# EMAIL_HOST_PASSWORD = 'Blogger2$'
+EMAIL_HOST_PASSWORD = 'Blogger2$'
 
 SITE_ID = 1
