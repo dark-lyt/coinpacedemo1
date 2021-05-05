@@ -64,6 +64,7 @@ def user_login(request):
 def dashboard(request):
     return render(request, 'core/index-2.html')
 
+@login_required
 def invest(request):
     item_list = Item.objects.all()
     return render(request, "core/transaction.html", {'item_list':item_list})
@@ -87,7 +88,7 @@ def edit(request):
 
     return render(request, 'account/edit.html', {'user_form': user_form, 'profile_form': profile_form})
 
-
+@login_required
 def transaction(request):
     try:
         history = CryptoCurrencyPayment.objects.filter(user=request.user).order_by('-created_at')
