@@ -13,74 +13,41 @@
 <section class="transaction">
         <div class="top">
             <span class="top__header">
-                <span data-title="Make a deposit" class="deposit-link">Invest</span>
+                <span data-title="Make a deposit" class="deposit-link"><a href="{% url 'account:invest' %}">Invest</a></span>
             </span>
         </div>
 
         <div class="bottom">
            <div class="bottom__box bottom__box--withdraw">
-               <div class="coin-select">
-                   <label for="coin-input" class="coin-select__label">Plan</label>
+               {% comment %} <div class="coin-select">
+                   <label for="coin-input" class="coin-select__label"><h1> Select Plan</h1></label>
                    <select name="coin" id="coin-input" class="coin-select__input">
                         <option value="etc">
                             Select your plan
+                        </option>
                     {% for plan in item_list %}
+                    <a href="{{ plan.get_absolute_url }}">
                         <option value="btc">
-                          <a href="{{ plan.get_absolute_url }}">{{ plan.title }}</a>
+                          {{ plan.title }}
                         </option>
+                    </a>
                         {% endfor %}
-                       {% comment %} <option value="eth">
-                           Advance
-                        </option>
-                       <option value="ltc">
-                           Luxury
-                        </option>
-                       <option value="bch">
-                           Legend
-                        </option> {% endcomment %}
                    </select>
-               </div>
+               </div> {% endcomment %}
                <div class="plan-container">
                {% for plan in item_list %}
                    <div class="plan-1">
-                   
-                   <div class="plan-title">
-                        <p>{{ plan.title }}</p>
-                        <span class="beginner-price">
-                            ${{ plan.min_price }}-${{ plan.max_price }}
-                        </span>
-                       
-                    </div>
+                   <a href="{{ plan.get_absolute_url }}" class="plan-title">
+                    <div class="plan-title">
+                            <p>{{ plan.title }}</p>
+                            <span class="beginner-price">
+                                ${{ plan.min_price }}-${{ plan.max_price }}
+                            </span>
+                        </div>
+                    </a>
                    
                    </div>
                    {% endfor %}
-                   {% comment %} <div class="plan-2">
-                        <div class="plan-title">
-                            <p>Advanced Plan</p>
-                            <span class="beginner-price">
-                                $1000-$15000
-                            </span>
-                        
-                        </div>
-                   </div>
-                   <div class="plan-3">
-                        <div class="plan-title">
-                            <p>Luxury Plan</p>
-                            <span class="beginner-price">
-                                $15000-$50000
-                            </span>
-                        
-                        </div>
-                   </div>
-                   <div class="plan-4">
-                        <div class="plan-title">
-                            <p>Legend Plan</p>
-                            <span class="beginner-price">
-                                $50000-$100000
-                            </span>
-                        
-                        </div>
-                   </div> {% endcomment %}
                </div>
 
            
@@ -90,10 +57,6 @@
            <div class="bottom__box bottom__box--withdraw">
                <div class="coin-form-box">
 
-               {% comment %} <form action=".",, method="post">
-               {% csrf_token %}
-               {{ form }}
-               </form> {% endcomment %}
                 <form class="coin-form" action="." method="post">
 
                 {% csrf_token %}
@@ -113,58 +76,7 @@
                 </form>
                </div>
            </div>
-           
-            <div class="bottom__box bottom__box--deposit">
-                <div class="coin-select">
-                    <label for="coin-input" class="coin-select__label">Coin</label>
-                    <select name="coin" id="coin-input" class="coin-select__input">
-                        <option value="btc">
-                           Bitcoin
-                         </option>
-                        <option value="eth">
-                            Ethereum
-                         </option>
-                        <option value="ltc">
-                            Litecoin
-                         </option>
-                        <option value="bch">
-                            Bitcoin Cash
-                         </option>
-                        <option value="etc">
-                            Ethereum classic
-                         </option>
-                    </select>
-                </div>
- 
-                <div class="coin-details">
-                  <div class="coin-details__box">
-                     <span class="coin-details__text">Total balance:</span>
-                     <span class="coin-details__balance" data-text="%type%">%value% </span>
-                  </div>
- 
-                     <ol class="coin-details__instructions">
-                         <li class="coin-details__instructions__list">
-                             Do not withdraw directly to a crowdfund or ICO address, as your account will not be credited with tokens from such sales.
-                         </li>
-                         <li class="coin-details__instructions__list">
-                             When withdrawing to the Binance user's address, the handling fee will be returned to the Current Account by default.
-                         </li>
-                     </ol>
-                </div>
-
-                <div class="tooltip">Tips:
-                        <ul class="tooltiptext">
-                            <li>
-                                Coins will be deposited after 1 network confirmations.
-                            </li>
-                            <li>
-                                Until 2 confirmations are made, an equivalent amount of your assets will be temporarily unavailable for withdrawals.
-                            </li>
-                        </ul>
-                    </span>
-                  </div>
-            </div>
-            <div class="bottom__box bottom__box--deposit">2</div>
+   
         </div>
     </section>
 {% endblock content %}

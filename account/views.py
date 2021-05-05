@@ -62,7 +62,14 @@ def user_login(request):
 
 @login_required
 def dashboard(request):
-    return render(request, 'core/index-2.html')
+    total = 0
+    total_usd = 0
+    history = CryptoCurrencyPayment.objects.filter(user=request.user).order_by('-created_at')
+    for history in history:
+        if history.status == 'paid':
+            total += history.crypto_amount
+            total_usd += history.fiat_amount
+    return render(request, 'core/index-2.html', {'total':total, "total_usd":total_usd})
 
 @login_required
 def invest(request):
