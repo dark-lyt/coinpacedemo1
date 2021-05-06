@@ -59,6 +59,38 @@
             </div>
         </section>
         <!-- Features Section Ends -->
+        {% comment %} PLANS {% endcomment %}
+        <center>
+<div style="position: relative;width:90%;line-height:1em;display:block;font-size:15pt;height:auto;padding: 0.2em;background:#b20768;border-radius:20px 0px 20px 0px;">
+Get $1000 free for every $3000 investment made
+</div>   <br><br>
+    
+
+{% comment %} <div style="position: relative;width:8em;line-height:1em;display:block;font-size:25pt;height:auto;padding: 1em;background:#b20768;border-radius:20px 0px 20px 0px;">
+10% Referral Commission
+</div> {% endcomment %}
+
+
+ <h1><b>COINPACE BTC Investment Pricing Plans</b></h1> 
+{% for item in item_list %}
+    
+    <div class="boxx"style="background: #840786;color:white;border:6px solid black;"><br>
+<span>{{ item.title }}</span>
+<h1 style="color:white;"><b>${{item.min_price}} - ${{item.max_price}}</b></h1>
+<h4 style="color:white;">{{ item.description1 }}<br />{{ item.description2 }}</h4>
+<h4 style="color:white;">Integrated online support</h4>
+<h5 style="width: 100%;color:white;height:3em;background:black;line-height:3em;"><b>DEDICATED ACCOUNT MANAGER</b></h5>
+<h4 style="color:white;">{{ item.description3 }}</h4>
+<h4 style="color:white;">{{ item.description4 }}</h4>
+<h4 style="color:white;">Local language support</h4>
+<h4 style="color:white;">Free Withdrawal: No</h4>
+<h4 style="color:white;"><a href=" {% url 'account:invest'  %}"><button>Get Started</button></a></h4>
+</div>
+{% endfor %}
+
+<br /><br /><br /><br />
+</center> 
+{% comment %} END OF PLANS {% endcomment %}
         <!-- About Section Starts -->
         <section class="about-us">
             <div class="container">
@@ -104,8 +136,7 @@
                 <!-- Section Content Ends -->
             </div>
         </section>
-        
-        
+        <br /><br />
            <center>
            
          
@@ -247,94 +278,7 @@ button{cursor: pointer;color:black;background:white;}
 
 .boxx span{font-size:18pt;display:block;margin:0em 0em 0em;}
 </style>
-<center>
-    
-<br>
-<div style="position: relative;width:90%;line-height:1em;display:block;font-size:15pt;height:auto;padding: 0.2em;background:#b20768;border-radius:20px 0px 20px 0px;">
-Get $1000 free for every $3000 investment made
-</div>   <br><br>
-    
 
-<div style="position: relative;width:8em;line-height:1em;display:block;font-size:25pt;height:auto;padding: 1em;background:#b20768;border-radius:20px 0px 20px 0px;">
-10% Referral Commission
-</div>
-
-
- <h1><b>Forex/CFDs<br />
-Pricing Plans</b></h1> 
-{% for item in item_list %}
-    
-    <div class="boxx"style="background: #840786;color:white;border:6px solid black;"><br>
-<span>{{ item.title }}</span>
-<h1 style="color:white;"><b>${{item.min_price}} - ${{item.max_price}}</b></h1>
-<h4 style="color:white;">{{ item.description1 }}<br />{{ item.description2 }}</h4>
-<h4 style="color:white;">Integrated online support</h4>
-<h5 style="width: 100%;color:white;height:3em;background:black;line-height:3em;"><b>DEDICATED ACCOUNT MANAGER</b></h5>
-<h4 style="color:white;">{{ item.description3 }}</h4>
-<h4 style="color:white;">{{ item.description4 }}</h4>
-<h4 style="color:white;">Local language support</h4>
-<h4 style="color:white;">Free Withdrawal: No</h4>
-<h4 style="color:white;"><a href=" {% url 'account:invest'  %}"><button>Get Started</button></a></h4>
-</div>
-{% endfor %}
-{% comment %} <div class="boxx"style="background: #840786;color:white;border:6px solid black;"><br>
-
-<h1 style="color:white;"><b>$300 - $1,000</b></h1>
-<h4 style="color:white;">Min.<br />5% deposit bonus</h4>
-<h4 style="color:white;">Integrated online support</h4>
-<h5 style="width: 100%;color:white;height:3em;background:black;line-height:3em;"><b>DEDICATED ACCOUNT MANAGER</b></h5>
-<h4 style="color:white;">Maintenance Fees: Yes</h4>
-<h4 style="color:white;">Trading Freq.: Low</h4>
-<h4 style="color:white;">Local language support</h4>
-<h4 style="color:white;">Free Withdrawal: No</h4>
-<h4 style="color:white;"><a href="reg33c0.html?reg#form"><button>Get Started</button></a></h4>
-</div> {% endcomment %}
-
-
-{% comment %} <div class="boxx"style="background: #b20768;color:white;border:6px solid black;"><br>
-<span>Advanced Plan</span>
-<h1 style="color:white;"><b>$1,000 - $15,000</b></h1>
-<h4 style="color:white;">Min.<br />10% deposit bonus</h4>
-<h4 style="color:white;">Integrated online support</h4>
-<h5 style="width: 100%;color:white;height:3em;background:black;line-height:3em;"><b>SENIOR ACCOUNT MANAGER</b></h5>
-<h4 style="color:white;">Maintenance Fees: Yes</h4>
-<h4 style="color:white;">Trading Freq.: Low</h4>
-<h4 style="color:white;">Local language support</h4>
-<h4 style="color:white;">Free Withdrawal: Yes</h4>
-<a href="reg33c0.html?reg#form"><button>Get Started</button></a>
-
-</div>
-
-
-
-<div class="boxx"style="background: #040781;color:white;border:6px solid black;"><br>
-<span>Luxury Plan</span>
-<h1 style="color:white;"><b>$15,000 - $50,000</b></h1>
-<h4 style="color:white;">Min.<br />12.5% deposit bonus</h4>
-<h4 style="color:white;">Integrated online support</h4>
-<h5 style="width: 100%;color:white;height:3em;background:black;line-height:3em;"><b>PERSONAL RELATIONSHIP MANAGER</b></h5>
-<h4 style="color:white;">Maintenance Fees: Yes</h4>
-<h4 style="color:white;">Trading Freq.: High</h4>
-<h4 style="color:white;">Local language support</h4>
-<h4 style="color:white;">Free Withdrawal: Yes</h4>
-<a href="reg33c0.html?reg#form"><button>Get Started</button></a>
-
-</div>
-
-
-<div class="boxx"style="background: #036a69;color:white;border:6px solid black;"><br>
-<span>Legend Plan</span>
-<h1 style="color:white;"><b>$50,000 - $100,000</b></h1>
-<h4 style="color:white;">Min.<br />20% deposit bonus</h4>
-<h4 style="color:white;">Integrated online support</h4>
-<h5 style="width: 100%;color:white;height:3em;background:black;line-height:3em;"><b>PERSONAL RELATIONSHIP MANAGER</b></h5>
-<h4 style="color:white;">Maintenance Fees: Yes</h4>
-<h4 style="color:white;">Trading Freq.: Max</h4>
-<h4 style="color:white;">Local language support</h4>
-<h4 style="color:white;">Free Withdrawal: Yes</h4>
-<a href="reg33c033c0.html?reg#form"><button>Get Started</button></a>
-</div> {% endcomment %}
-</center> 
         
         
         
@@ -534,7 +478,7 @@ If the investor had shorted the AUD and went long the USD, he or she would have 
 <br />
 
 <!-- Ticker Widget BEGIN -->
-<div class="widget-container">
+{% comment %} <div class="widget-container">
 <iframe src="https://widgetscdn.cryptomood.com/ticker-widget?theme=light"width="100%"></iframe>
 </div>
 <!-- Ticker Widget END -->
@@ -544,16 +488,16 @@ If the investor had shorted the AUD and went long the USD, he or she would have 
 <iframe src="https://widgetscdn.cryptomood.com/daily-overview"width="100%"height="250%"style="border:none;"></iframe>
 </div>
 <!-- Daily Overview Widget END -->
-<br />
+<br /> {% endcomment %}
 
 
 
-<div class="title-head-subtitle">
+{% comment %} <div class="title-head-subtitle">
         
                         <img src=" {% static 'images/doc.jpg' %}" width="80%"/>
                     </div>
               </center>
-        </div>
+        </div> {% endcomment %}
         </section>
        
         <!-- Team Section Ends -->
