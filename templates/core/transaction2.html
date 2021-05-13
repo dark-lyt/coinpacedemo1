@@ -12,13 +12,16 @@
 {% block content %}
 <section class="transaction">
         <div class="top">
-            <span class="top__header">
+            {% comment %} <span class="top__header">
                 <span data-title="Make a deposit" class="deposit-link"><a href="{% url 'account:invest' %}">Invest</a></span>
-            </span>
+            </span> {% endcomment %}
         </div>
 
         <div class="bottom">
            <div class="bottom__box bottom__box--withdraw">
+             <span class="top__header">
+                <span data-title="Make a deposit" class="deposit-link"><a href="{% url 'account:invest' %}">Invest</a></span>
+            </span>
                {% comment %} <div class="coin-select">
                    <label for="coin-input" class="coin-select__label"><h1> Select Plan</h1></label>
                    <select name="coin" id="coin-input" class="coin-select__input">
@@ -36,9 +39,9 @@
                </div> {% endcomment %}
                <div class="plan-container">
                {% for plan in item_list %}
-                   <div class="plan-1">
+                   <div class="plan-1 brass-plan">
                    <a href="{{ plan.get_absolute_url }}" class="plan-title">
-                    <div class="plan-title">
+                    <div class="plan-title {{ item.slug }}">
                             <p>{{ plan.title }}</p>
                             <span class="beginner-price">
                                 ${{ plan.min_price }}-${{ plan.max_price }}

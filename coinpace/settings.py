@@ -11,7 +11,9 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+from celery.app.base import Celery
 import django_heroku
+from celery.schedules import crontab
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -42,7 +44,9 @@ INSTALLED_APPS = [
     # 'google_translate',
     'phonenumber_field',
     'django_countries',
+    'django_celery_beat',
     'account',
+    'django_celery_results',
     'cryptocurrency_payment.apps.CryptocurrencyPaymentConfig',
 ]
 
@@ -76,7 +80,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'coinpace.wsgi.application'
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
@@ -191,11 +195,55 @@ LOGOUT_URL = 'account:logout'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
+
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'karlavogel1235@gmail.com'
-EMAIL_HOST_PASSWORD = 'Blogger2$'
+# EMAIL_HOST_USER = 'karlavogel1235@gmail.com'
+EMAIL_HOST_USER = 'support@coinpace.org'
+EMAIL_HOST_PASSWORD = 'Blogger3$'
+
+
+# Other Django configurations...
+# Celery application definition
+# http://docs.celeryproject.org/en/v4.0.2/userguide/configuration.html
+CELERY_BROKER_URL = 'redis://localhost:6379'
+CELERY_RESULT_BACKEND = 'django-cache'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TASK_SERIALIZER = 'json'
+# Celery Configuration Options
+CELERY_TIMEZONE = "Australia/Tasmania"
+CELERY_TASK_TRACK_STARTED = True
+CELERY_TASK_TIME_LIMIT = 30 * 60
+
+CELERY_BEAT_SCHEDULE = {
+    'task-number-one': {
+        'task': 'core.tasks.confirm_payment',
+        'schedule': crontab(minute='*/20'),
+        
+    },
+    'task-number-two': {
+        'task': 'core.tasks.grow_plan',
+        'schedule': crontab(minute=0, hour=0),
+        
+    }
+}
+
+# celery setting.
+CELERY_CACHE_BACKEND = 'default'
+
+# django setting.
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+        'LOCATION': 'my_cache_table',
+    }
+}
+
+
 
 SITE_ID = 1

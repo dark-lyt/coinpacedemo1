@@ -9,11 +9,11 @@
                             <h4>Our Company</h4>
                             <div class="menu">
                                 <ul>
-                                    <li><a href="index.html">Home</a></li>
-                                    <li><a href="about.html">About</a></li>
-                                    <li><a href="services.html">Services</a></li>
-                                    <li><a href="pricing.html">Pricing</a></l>
-                                    <li><a href="contact.html">Contact</a></li>
+                                    <li><a href="{% url 'core:home'  %}">Home</a></li>
+                                    <li><a href="{% url 'core:about'  %}">About</a></li>
+                                    <li><a href="{% url 'core:services'  %}">Services</a></li>
+                                    {% comment %} <li><a href="pricing.html">Pricing</a></l> {% endcomment %}
+                                    <li><a href="{% url 'core:contact'  %}">Contact</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -23,10 +23,10 @@
                             <h4>Help & Support</h4>
                             <div class="menu">
                                 <ul>
-                                    <li><a href="faq.html">FAQ</a></li>
-                                    <li><a href="terms-of-services.html">Terms of Services</a></li>
-                                    <li><a href="reg33c0.html?reg#form">Register</a></li>
-                                    <li><a href="regddc1d.html?log#form">Login</a></li>
+                                    {% comment %} <li><a href="faq.html">FAQ</a></li> {% endcomment %}
+                                    <li><a href="{% url 'core:terms'  %}">Terms of Services</a></li>
+                                    <li><a href="{% url 'account:signup' %}">Register</a></li>
+                                    <li><a href="{% url 'account:login' %}">Login</a></li>
                                    
                                 </ul>
                             </div>
@@ -52,10 +52,10 @@
 							<!-- Social Media Profiles Starts -->
                             <div class="social-footer">
                                 <ul>
-                                    <li><a href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="#" target="_blank"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="#" target="_blank"><i class="fa fa-google-plus"></i></a></li>
-                                    <li><a href="#" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                                    <li><a href="https://m.facebook.com/CoinPayments/" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="https://mobile.twitter.com/CoinPaymentsNET?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                                    {% comment %} <li><a href="#" target="_blank"><i class="fa fa-google-plus"></i></a></li> {% endcomment %}
+                                    {% comment %} <li><a href="#" target="_blank"><i class="fa fa-linkedin"></i></a></li> {% endcomment %}
                                 </ul>
                             </div>
 							<!-- Social Media Profiles Ends -->

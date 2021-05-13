@@ -6,7 +6,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from .forms import LoginForm, UserRegistratioinForm, UserEditForm, ProfileEditForm
 from django.contrib import messages
-from core.models import Item
+from core.models import Item, Withdraw
 from core.forms import WithdrawForm
 from cryptocurrency_payment.models import CryptoCurrencyPayment
 from coinpace.settings import EMAIL_HOST_USER
@@ -85,13 +85,14 @@ def dashboard(request):
             message =f"Message from:{request.user}:\n{request.user} wishes to withdraw {amount} worth of btc from thier investment to\
                 the address: {address}" 
             recipient = ADMIN_MAIL
-            send_mail(subject, message, EMAIL_HOST_USER, [recipient   ], fail_silently=False)
-            # user mail
+            # send_mail(subject, message, EMAIL_HOST_USER, [recipient   ], fail_silently=False)
             send_mail("Withdrawal Request: COINPACE", f"Your request for {amount} worth of BTC from\
                 your investment has been recieved and will be sent to the address:\
                      {address} as you have provided with in the next 24hrs.\
                     Thank you for investing with us.", EMAIL_HOST_USER, [request.user.email], fail_silently=False)
             messages.info(request, "Your request has been recieved")
+            withdraw = Withdraw.objects.create(user=request.user, amount=amount)
+            withdraw.save()
             return redirect("core:home")
         else:
             messages.info(request, "You are not able to withdraw at the moment")

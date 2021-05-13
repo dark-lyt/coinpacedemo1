@@ -90,7 +90,7 @@
                                     <li><a href="{% url 'account:signup'%}">Register page</a></li>
                                     <li><a href="{% url 'account:login'%}">Login page</a></li>
                                     {% endif %}
-                                        <li><a href="terms-of-services.html">Terms of Services</a></li>
+                                        <li><a href="{% url 'core:terms' %}">Terms of Services</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="{% url 'core:contact'%}">Contact</a></li>

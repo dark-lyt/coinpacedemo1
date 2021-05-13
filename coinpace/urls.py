@@ -20,6 +20,7 @@ from cryptocurrency_payment import urls as cryptocurrency_payment_urls
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include("core.urls", namespace='core')),
+    path('', include('django.contrib.auth.urls')),
     path('account/', include("account.urls", namespace='account')),
     path('paydetails/', include(cryptocurrency_payment_urls)),
 ]

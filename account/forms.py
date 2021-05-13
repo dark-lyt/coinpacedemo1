@@ -14,7 +14,9 @@ class LoginForm(forms.Form):
      
 
 class UserRegistratioinForm(forms.ModelForm):
-    photo = forms.ImageField()
+    photo = forms.ImageField(
+        label='Select a valid ID',
+)
     username = forms.CharField(max_length=20, min_length=8)
     country = forms.ChoiceField(widget=CountrySelectWidget, choices=countries)
     phone_number = PhoneNumberField()

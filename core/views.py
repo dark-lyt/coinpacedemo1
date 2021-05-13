@@ -93,6 +93,5 @@ def contact(request):
             send_mail(subject, message, EMAIL_HOST_USER, [recipient   ], fail_silently=False)
             messages.info(request, "Thank you for reaching out to us. You would be responded to as soon as possible")
             return redirect("core:home")
-    print("HEYYYY WTF")
     return render(request, "core/contact.html", {'form':form})
 

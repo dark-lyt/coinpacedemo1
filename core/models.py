@@ -6,31 +6,17 @@ from django_countries.fields import CountryField
 from cryptocurrency_payment.models import CryptoCurrencyPayment
 
 CATEGORY_CHOICES = (
-    ('BP', 'Baby Plan'),
-    ('AP', 'Advanced Plan'),
-    ('LP', 'Luxury Plan'),
-    ('LgP', 'Legend Plan')
+    ('BS', 'Brass Plan'),
+    ('BP', 'Bronze Plan'),
+    ('SP', 'Silver Plan'),
+    ('GP', 'Gold Plan')
 )
 LABEL_CHOICES = (
-    ('DAM', 'Dedicated Account Manager'),
-    ('SAM', 'Senior Account Manager'),
-    ('PRM', 'Personal Relational Manager'),
+    ('ASP', 'A Starter Pack'),
+    ('MP', 'Most Popular'),
+    ('INV', 'Invest More, Earn More'),
+    ('AHF', 'Higher Features You Will Need'),
 )
-# ADDRESS_CHOICES = (
-#     ('B', 'billing'),
-#     ('S', 'shipping')
-# )
-
-
-# class UserProfile(models.Model):
-#     user = models.OneToOneField(
-#         settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-#     stripe_customer_id = models.CharField(max_length=20, blank=True, null=True)
-#     one_click_purchasing = models.BooleanField()
-
-#     def __str__(self):
-#         return self.user.username
-
 
 class Item(models.Model):
     title = models.CharField(max_length=100)
@@ -45,8 +31,8 @@ class Item(models.Model):
     description3 = models.CharField(max_length=30)
     description4 = models.CharField(max_length=30)
     description5 = models.CharField(max_length=30)
-    description6 = models.CharField(max_length=30)
-    description7 = models.CharField(max_length=30)
+    description6 = models.CharField(max_length=30, null=True, blank=True)
+    # description7 = models.CharField(max_length=30)
 
     def __str__(self):
         return self.title
@@ -71,9 +57,7 @@ class OrderItem(models.Model):
 class Order(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
                              on_delete=models.CASCADE)
-    ref_code = models.CharField(max_length=20, null=True, blank=True)
     items = models.ManyToManyField(OrderItem)
-    start_date = models.DateTimeField(auto_now_add=True)
     ordered_date = models.DateTimeField()
     ordered = models.BooleanField(default=False)
 
@@ -83,9 +67,16 @@ class Order(models.Model):
 
 
 class Withdraw(models.Model):
-    order = models.ForeignKey(CryptoCurrencyPayment, on_delete=models.CASCADE)
+    is_able = models.BooleanField(default=False)
     sent = models.BooleanField(default=False)
-    amount = models.IntegerField()
+    amount = models.IntegerField(default=0)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,
+                             on_delete=models.CASCADE)
     def __str__(self):
         return f"{self.pk}"
 
+
+class PlanGrowth(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,
+                             on_delete=models.CASCADE) 
+    amount = models.FloatField(default=0.0)
