@@ -91,7 +91,7 @@ def contact(request):
             message =f"Message from:{form.cleaned_data.get('email')}:\n{form.cleaned_data.get('snd_message')}" 
             recipient = ADMIN_MAIL
             send_mail(subject, message, EMAIL_HOST_USER, [recipient   ], fail_silently=False)
-            messages.info(request, "Thank you for reaching out to us. You would be responded to as soon as possible")
+            messages.Info(request, "Thank you for reaching out to us. You would be responded to as soon as possible")
             return redirect("core:home")
     return render(request, "core/contact.html", {'form':form})
 
