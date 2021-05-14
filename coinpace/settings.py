@@ -139,7 +139,7 @@ STATICFILES_DIRS = (
 DEFAULT_AUTO_FIELD='django.db.models.AutoField' 
 
 #  Add configuration for static files storage using whitenoise
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 django_heroku.settings(locals())
 
