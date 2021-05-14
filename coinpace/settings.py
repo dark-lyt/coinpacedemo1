@@ -1,3 +1,4 @@
+from coinpace.settings.base import SECRET_KEY
 import os
 from celery.app.base import Celery
 import django_heroku
@@ -11,8 +12,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '#25allw07=4$_7&lk&1dte*gg@in5&94@dq4uvjxoev151y83y'
-
+with open(os.path.join(BASE_DIR, 'secret_key.txt')) as f:
+    SECRET_KEY = f.read().strip()
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
 DEBUG = False
@@ -21,7 +22,9 @@ ALLOWED_HOSTS = ['http://localhost:8000', 'https://coinpacedemo.herokuapp.com/']
 ADMINS = (
 ('admin', 'Karlavogel1235@gmail.com'),)
 
-SECURE_HSTS_SECONDS = 3600
+
+#HTTPS SETTINGS
+SECURE_HSTS_SECONDS = 31536000 # 1 YEAR
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_PRELOAD = True
 SECURE_SSL_REDIRECT = True
@@ -128,12 +131,12 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 STATIC_URL = '/static/'
 
 # Extra lookup directories for collectstatic to find static files
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, 'static/'),
 )
 
 DEFAULT_AUTO_FIELD='django.db.models.AutoField' 
