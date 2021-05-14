@@ -1,0 +1,28 @@
+
+/* 
+purble color 500 #9c27B0
+
+PURPLE COLOR 300 #BA68C8
+
+GRADIENT RIGHT COLOR #f746a8 PINKISH
+*/
+
+a.btn.btn-primary {
+    background: linear-gradient(90deg, #9c27B0, #BA68C8);
+    color: rgb(255, 255, 255);
+    border: none;
+
+}
+.btn, a.btn, button, input[type="submit"]{
+    border-radius: 50px;
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+    background: #BA68C8 !important;
+}
+
+#main-slide .item.item-1 {
+    background-image: url("../images/slider/bg3.e10016749f3e.html");
+}
+#main-slide .item.item-1 {
+    background-image: url("../images/slider/bg4.54908758977b.html");
+}

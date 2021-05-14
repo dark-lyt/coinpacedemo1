@@ -89,7 +89,7 @@ def dashboard(request):
             send_mail("Withdrawal Request: COINPACE", f"Your request for {amount} worth of BTC from\
                 your investment has been recieved and will be sent to the address:\
                      {address} as you have provided with in the next 24hrs.\
-                    Thank you for investing with us.", EMAIL_HOST_USER, [request.user.email], fail_silently=False)
+                    Thank you for investing with us.", EMAIL_HOST_USER, request.user.email, fail_silently=False)
             messages.info(request, "Your request has been recieved")
             withdraw = Withdraw.objects.create(user=request.user, amount=amount)
             withdraw.save()
