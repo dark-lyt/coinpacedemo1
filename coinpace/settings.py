@@ -1,4 +1,4 @@
-from coinpace.settings.base import SECRET_KEY
+# from coinpace.settings.base import SECRET_KEY
 import os
 from celery.app.base import Celery
 import django_heroku
