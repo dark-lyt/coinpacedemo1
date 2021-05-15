@@ -1,7 +1,4 @@
-@font-face {
-  font-family: "Lato";
-  src: url("fonts/Lato/Lato-Regular.ttf");
-}
+
 
 @-webkit-keyframes moveInLeft {
   0% {
@@ -1285,8 +1282,6 @@ body {
 .header {
   width: 100%;
   height: 100vh;
-  background-image: -webkit-gradient(linear, left top, right bottom, from(#49d3f5), to(#00c4f5)), url("../images/GYMl38.jpg");
-  background-image: linear-gradient(to right bottom, #49d3f5, #00c4f5), url("../images/GYMl38.jpg");
   background-blend-mode: overlay;
   background-position: center;
   background-size: cover;
@@ -1383,8 +1378,6 @@ body {
 .section-investment {
   -webkit-transform: skewY(-5deg);
   transform: skewY(-5deg);
-  background-image: -webkit-gradient(linear, left top, right bottom, from(rgba(41, 152, 255, 0.7)), to(rgba(86, 67, 250, 0.7))), url("../images/angled-shapes-BW.jpg");
-  background-image: linear-gradient(to bottom right, rgba(41, 152, 255, 0.7), rgba(86, 67, 250, 0.7)), url("../images/angled-shapes-BW.jpg");
   background-position: center;
   margin-top: -15rem;
   padding: 15rem 0;

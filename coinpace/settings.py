@@ -1,6 +1,7 @@
 import os
 from celery.app.base import Celery
 import django_heroku
+import logging
 from celery.schedules import crontab
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -25,17 +26,17 @@ ADMINS = (
 
 
 #HTTPS SETTINGS
-# SECURE_HSTS_SECONDS = 31536000 # 1 YEAR
-# SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-# SECURE_HSTS_PRELOAD = True
-# SECURE_SSL_REDIRECT = True
-# SESSION_COOKIE_SECURE= True
-# CSRF_COOKIE_SECURE = True
+SECURE_HSTS_SECONDS = 31536000 # 1 YEAR
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE= True
+CSRF_COOKIE_SECURE = True
 # Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
-    'whitenoise.runserver_nostatic',
+    # 'whitenoise.runserver_nostatic',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -148,7 +149,7 @@ DEFAULT_AUTO_FIELD='django.db.models.AutoField'
 django_heroku.settings(locals())
 
 #  Add configuration for static files storage using whitenoise
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE  = 'coinpace.storage.CompressedManifestStaticFilesStorage'
 
 # django_heroku.settings(locals())
 
